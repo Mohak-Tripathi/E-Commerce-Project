@@ -12,7 +12,10 @@ export const addToCart = (id, qty) => {
         // `http://localhost:5000/api/products/${id}`
     dispatch({
       type: CART_ADD_ITEM,
-      payload: {
+      payload: { 
+        // selectively extracting fields which we want to store in cart. Means in one product there there alot of fields. We are showing the most relevant one. 
+        //And also "qty"
+        
         product: data._id,
         name: data.name,
         image: data.image,
@@ -23,7 +26,7 @@ export const addToCart = (id, qty) => {
     });
     localStorage.setItem(
       "cartItems",
-      JSON.stringify(getState().cart.cartItems)
+      JSON.stringify(getState().cart.cartItems)  // storing whole CartItems array in local Storage. 
     );
 
   };
